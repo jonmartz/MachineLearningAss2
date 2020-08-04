@@ -179,13 +179,13 @@ def test(parsed_train_set_encoded, parsed_test_set_encoded, target_col, clf, mod
         # print ("x_train is:", x_train)
         # print ("y_train is:", y_train)
         clf.fit(x_train, y_train)
-        # dump(clf, "data/train.joblib")
+        # dump(clf, "MachineLearningAss2/data/train.joblib")
 
     if (mode == "test"):
         x_test = parsed_test_set_encoded
         # print ("test parsed data is: ", x_test)
         clf.fit(x_train, y_train)
-        # clf = load("data/train.joblib")
+        # clf = load("MachineLearningAss2/data/train.joblib")
 
     y_pred = clf.predict(x_test)
     y_pred_proba = clf.predict_proba(x_test)
@@ -199,7 +199,7 @@ def test(parsed_train_set_encoded, parsed_test_set_encoded, target_col, clf, mod
     # print("length of ProbToYes is:\n",len(ProbToYes))
     print("ProbToYes is:\n", ProbToYes)
 
-    with open("data/out.csv", mode='w') as file:
+    with open("MachineLearningAss2/data/out.csv", mode='w') as file:
         writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         writer.writerow(["Id", "ProbToYes"])
         for i in range(len(ProbToYes)):
@@ -222,7 +222,7 @@ to_drop = []
 
 # =============================================================================
 # ##### OFFLINE testing code ####### train & validation
-# dataset = pd.read_csv("data/train.csv")
+# dataset = pd.read_csv("MachineLearningAss2/data/train.csv")
 # train_fraction = 0.7
 # ## remove columns with minimal data
 # dataset =  rmissingvaluecol_onedf(dataset,80) #Here threshold is 10% which means we are going to drop columns having more than 10% of missing values
@@ -255,7 +255,7 @@ to_drop = []
 
 
 ##### ONLINE testing code ####### train & validation
-dataset = pd.read_csv("data/train.csv")
+dataset = pd.read_csv("MachineLearningAss2/data/train.csv")
 ### if train_fraction = 1, just encode, no split
 train_fraction = 1
 ## remove columns with minimal data
@@ -275,7 +275,7 @@ actual_train_set = train_set_encoded_a
 # parsed_test_set_encoded = rmissingvaluecol_onedf(test_set_encoded_b,0.01) #Here threshold is 0.01% which means we are going to drop columns having more than 0.01% of missing values
 
 
-dataset = pd.read_csv("data/test.csv")
+dataset = pd.read_csv("MachineLearningAss2/data/test.csv")
 ### if train_fraction = 1, just encode, no split
 train_fraction = 1
 ## remove columns with minimal data
